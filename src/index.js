@@ -1,12 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import { ConnectedRouter } from 'connected-react-router';
+// **** (1 - 1) Provider 불러오기
+import { Provider } from 'react-redux';
+import configureStore, { history } from './store/configureStore';
+
+import './reset.css';
 import App from './App';
+
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import rootSaga from './sagas/sagas';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// **** (2) 스토어를 만들고 현재 값 확인해보기
+const store = configureStore();
+
+const setSagas = () => {
+  if (process.env.NODE_ENV === 'development') {
+    // sagas start
+    console.log('set sagas');
+    store.runSaga(rootSaga);
+  } else {
+    console.log('production');
+  }
+};
+
+setSagas();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root'),
+);
+
+// we don't need Worker because of it's hybrid app project.
 serviceWorker.unregister();
