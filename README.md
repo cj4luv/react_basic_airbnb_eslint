@@ -1,6 +1,11 @@
-## 리액트 기본 스켈레톤 with airbnb-config-eslint
+## 리액트 스켈레톤
+1. airbnb-config-eslint
+2. redux
+3. redux-saga
+4. react-redux
+5. react-router
 
-## 필수 사전 지식 리스트
+## 선행 학습 하면 프로젝트 진행에 도움이 되는 스킬들
 1. Render-props pattern - https://reactjs.org/docs/render-props.html
 2. HOC(High-Order-Component) - https://reactjs.org/docs/higher-order-components.html#___gatsby
 3. Context Api - https://reactjs.org/docs/legacy-context.html#how-to-use-context

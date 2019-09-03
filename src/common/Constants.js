@@ -1,7 +1,7 @@
 export const IS_DEV_MODE = process.env.NODE_ENV === 'development';
 
 export const SERVER_URL = IS_DEV_MODE
-  ? 'http://14.32.136.156:7450'
+  ? 'https://api.github.com/'
   : 'http://14.32.136.156:7450';
 
 export const PROJECT_NAME = 'hipay';

@@ -1,87 +1,58 @@
 import { schema, normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
-
-import DTO from './DTO';
+import 'isomorphic-fetch';
 
 import { SERVER_URL } from '../common/Constants';
 
 const API_ROOT = SERVER_URL;
 
-/**
- * @brief api for normalize
- * @return Ojbejct
- */
-async function callApiNormalize(apiInit, schemeInit) {
+// Extracts the next page URL from Github API response.
+function getNextPageUrl(response) {
+  const link = response.headers.get('link');
+  if (!link) {
+    return null;
+  }
+
+  const nextLink = link.split(',').find(s => s.indexOf('rel="next"') > -1);
+  if (!nextLink) {
+    return null;
+  }
+
+  return nextLink.split(';')[0].slice(1, -1);
+}
+
+function callApi(endpoint, schemaData) {
   // query 키가 apiInit에 존재하는지 체크 하는 함수 생성 필요
   try {
-    const fullUrl = apiInit.url.indexOf(API_ROOT) === -1
-      ? API_ROOT + apiInit.url
-      : apiInit.url;
+    const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
 
-    const init = {
-      ...apiInit,
-      url: fullUrl,
-    };
+    return fetch(fullUrl)
+      .then(response => response.json().then(json => ({ json, response }))).then(({ json, response }) => {
+        if (!response.ok) {
+          return Promise.reject(json);
+        }
 
-    const response = await DTO(init);
-    const json = await response.json();
+        const camelizedJson = camelizeKeys(json);
+        const nextPageUrl = getNextPageUrl(response);
 
-    if (!response.ok) {
-      return Promise.reject(json);
-    }
-
-    const camelizedJson = camelizeKeys(json);
-
-    const { results } = camelizedJson;
-
-    console.log('camelizedJson', results);
-
-    const normalizeJson = normalize(results, schemeInit);
-
-    console.log('normalizeJson', normalizeJson);
-
-    return { response: normalizeJson };
+        return Object.assign({},
+          normalize(camelizedJson, schemaData),
+          { nextPageUrl });
+      })
+      .then(
+        response => ({ response }),
+        error => ({ error: error.message || 'Something bad happened' }),
+      );
   } catch (error) {
     return { error: error || 'Something bad happened' };
   }
 }
 
-async function callApi(apiInit) {
-  // query 키가 apiInit에 존재하는지 체크 하는 함수 생성 필요
-  try {
-    const fullUrl = apiInit.url.indexOf(API_ROOT) === -1
-      ? API_ROOT + apiInit.url
-      : apiInit.url;
-
-    const init = {
-      ...apiInit,
-      url: fullUrl,
-    };
-
-    const response = await DTO(init);
-    const json = await response.json();
-
-    if (!response.ok) {
-      return Promise.reject(json);
-    }
-
-    const camelizedJson = camelizeKeys(json);
-
-    const { results } = camelizedJson;
-
-    // console.log('camelizedJson', results);
-
-    return { response: results };
-  } catch (error) {
-    return { error: error || 'Something bad happened' };
-  }
-}
-
-// Read more about Normalizr: https://github.com/gaearon/normalizr
-const userSchema = new schema.Entity('users', {}, { idAttribute: 'pidUser' });
+// Schemas for Github API responses.
+const userSchema = new schema.Entity('users', {
+  idAttribute: 'login',
+});
 
 // api services
-export const fetchUser = apiInit => callApi(apiInit);
-export const fetchWallet = apiInit => callApi(apiInit);
-
-export const tem = apiInit => callApiNormalize(apiInit, userSchema);
+export const fetchUser = login => callApi(`users/${login}`, userSchema);
+export const tem = '';

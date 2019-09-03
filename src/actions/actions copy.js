@@ -13,13 +13,15 @@ function createRequestTypes(base) {
 
 export const USER = createRequestTypes('USER');
 
-export const LOAD_USER_PAGE = 'LOAD_USER_PAGE';
-
 function action(type, payload = {}) {
   const result = {
     type,
     ...payload,
   };
+
+  if (type === USER_SUCCESS) {
+    console.log('action payload', payload);
+  }
 
   return result;
 }
@@ -28,13 +30,12 @@ export const USER_REQUEST = USER[REQUEST];
 export const USER_SUCCESS = USER[SUCCESS];
 export const USER_FAILURE = USER[FAILURE];
 
+
 export const user = {
   request: loginApi => action(USER_REQUEST, { loginApi }),
   success: (loginApi, response) => action(USER_SUCCESS, { loginApi, response }),
   failure: (loginApi, error) => action(USER_FAILURE, { loginApi, error }),
 };
-
-export const loadUserPage = (login, requiredFields = []) => action(LOAD_USER_PAGE, { login, requiredFields });
 
 // 액션 타입 정의
 export const HEADERS = 'HEADERS';
