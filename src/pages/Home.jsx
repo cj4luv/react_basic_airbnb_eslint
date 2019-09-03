@@ -8,16 +8,15 @@ import { loadUser } from '../actions';
 class Home extends PureComponent {
   componentDidMount() {
     const { getUserData } = this.props;
-
-    const res = getUserData('cj4luv');
-
-    console.log('did', res);
+    getUserData('cj4luv');
   }
 
   render() {
     const { users } = this.props;
 
     console.log('users', users);
+
+    if (!users) return <p>get data...</p>;
 
     return (
       <Fragment>
