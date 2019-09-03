@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
 
 import device from './device';
 import entities from './entities';
@@ -11,6 +10,5 @@ export default history => combineReducers({
   headers,
   user,
   entities,
-  router: connectRouter(history),
   // 다른 리듀서를 만들게되면 여기에 넣어줌..
 });

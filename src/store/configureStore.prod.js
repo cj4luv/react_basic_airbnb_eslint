@@ -1,14 +1,17 @@
-import { createStore } from 'redux';
-import { createHashHistory } from 'history';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import createRootReducer from '../reducers/reducers';
 
-export const history = createHashHistory();
-
 export default function configureStore() {
+  const sagaMiddleware = createSagaMiddleware();
   return {
     ...createStore(
-      createRootReducer(history),
+      createRootReducer(),
+      compose(
+        applyMiddleware(sagaMiddleware),
+      ),
     ),
+    runSaga: sagaMiddleware.run,
   };
 }
