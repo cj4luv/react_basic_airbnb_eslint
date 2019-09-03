@@ -22,12 +22,8 @@ function* fetchEntity(entity, apiFn, apiInit) {
 export const fetchUser = fetchEntity.bind(null, user, api.fetchUser);
 
 // load user unless it is cached
-// load user unless it is cached
-function* loadUser(login, requiredFields) {
-  const userData = yield select(getUser, login);
-  if (!userData || requiredFields.some(key => !Object.hasOwnProperty.call(userData, key))) {
-    yield call(fetchUser, login);
-  }
+function* loadUser(login) {
+  yield call(fetchUser, login);
 }
 
 /** *************************************************************************** */
@@ -38,9 +34,10 @@ function* loadUser(login, requiredFields) {
 export function* watchLoadUser() {
   while (true) {
     console.log('watchLoadUser');
-    const { login, requiredFields = [] } = yield take(actions.LOAD_USER_PAGE);
+    const { login } = yield take(actions.LOAD_USER);
+    console.log('login', login);
 
-    yield fork(loadUser, login, requiredFields);
+    yield fork(loadUser, login);
   }
 }
 

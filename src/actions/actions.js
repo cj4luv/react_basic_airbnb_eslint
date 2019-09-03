@@ -13,7 +13,7 @@ function createRequestTypes(base) {
 
 export const USER = createRequestTypes('USER');
 
-export const LOAD_USER_PAGE = 'LOAD_USER_PAGE';
+export const LOAD_USER = 'LOAD_USER';
 
 function action(type, payload = {}) {
   const result = {
@@ -34,7 +34,7 @@ export const user = {
   failure: (loginApi, error) => action(USER_FAILURE, { loginApi, error }),
 };
 
-export const loadUserPage = (login, requiredFields = []) => action(LOAD_USER_PAGE, { login, requiredFields });
+export const loadUser = login => action(LOAD_USER, { login });
 
 // 액션 타입 정의
 export const HEADERS = 'HEADERS';
