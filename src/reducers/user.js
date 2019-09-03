@@ -13,7 +13,7 @@ export default function user(state = initialState, action) {
     case USER_SUCCESS:
       return {
         ...state,
-        ...action.response,
+        ...action.user,
       };
     default:
       return state;

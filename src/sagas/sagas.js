@@ -1,9 +1,14 @@
 import {
-  call, fork, put, all, take, select,
+  call,
+  fork,
+  put,
+  all,
+  take,
+  // select,
 } from 'redux-saga/effects';
 import * as actions from '../actions';
 import api from '../services';
-import { getUser } from '../reducers/selectors';
+// import { getUser } from '../reducers/selectors';
 
 const { user } = actions;
 

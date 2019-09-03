@@ -3,8 +3,6 @@ import { DEVICE } from '../actions/actions';
 // **** 초기상태 정의
 const initialState = {
   available: false,
-  cordova: '8.0.0',
-  isVirtual: false,
   manufacturer: 'unknow',
   model: 'unknow',
   platform: 'unknow',
