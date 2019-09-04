@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { ButtonContainer } from '../containers';
+import { Board } from '../components';
 import { loadUser } from '../actions';
+
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -21,6 +23,7 @@ class Home extends PureComponent {
     return (
       <Fragment>
         <ButtonContainer />
+        <Board />
       </Fragment>
     );
   }
