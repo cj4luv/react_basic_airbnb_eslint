@@ -5,7 +5,104 @@ import React from 'react';
 
 const Board = () => (
   <div className="theme-body">
-    {/* theme-contents */}
+    <div className="theme-sidebar">
+      <div className="sidebar-area">
+        <nav className="theme-sidebar-nav">
+          <ul className="nav-items">
+            <li className="nav-item">
+              <a href="#" className="nav-link nav-first-link nav-dropdown-toggler dropdown">
+                <span className="glyphicons-home" aria-hidden="true" />
+                    대시보드
+                <span className="badge badge-pill badge-success">10</span>
+              </a>
+              <ul className="nav-dropdown-items nav-dropdown">
+                <li>
+                  <a href="#" className="nav-link nav-dropdown-toggler dropdown">대시보드</a>
+                  <ul className="nav-dropdown-items nav-dropdown">
+                    <li>
+                      <a href="#" className="nav-link">화면</a>
+                    </li>
+                    <li>
+                      <a href="#" className="nav-link">화면</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#" className="nav-link">대시보드</a>
+                </li>
+                <li>
+                  <a href="#" className="nav-link">대시보드</a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link nav-first-link active current">
+                <span className="glyphicons-text" aria-hidden="true" />
+                    주문 관리
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link nav-first-link nav-dropdown-toggler dropdown">
+                <span className="glyphicons-store" aria-hidden="true" />
+                    서비스 관리
+                <span className="badge badge-pill badge-primary">2</span>
+              </a>
+              <ul className="nav-dropdown-items nav-dropdown">
+                <li>
+                  <a href="#" className="nav-link">화면</a>
+                </li>
+                <li>
+                  <a href="#" className="nav-link">화면</a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link nav-first-link undropdown">
+                <span className="glyphicons-user" aria-hidden="true" />
+                    고객 관리
+                <span className="badge badge-pill badge-info">5</span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link nav-first-link">
+                <span className="glyphicons-chart_bar" aria-hidden="true" />
+                    리포트
+              </a>
+            </li>
+            <li className="nav-item d-md-none">
+              <a href="#" className="nav-link nav-first-link undropdown">
+                <span className="glyphicons-notification" aria-hidden="true" />
+                    알람
+                <span className="badge badge-pill badge-danger">3</span>
+              </a>
+            </li>
+            <li className="nav-item d-md-none">
+              <span className="nav-state undropdown">
+                <span className="glyphicons-internet" aria-hidden="true" />
+                    온라인 상태
+                <div className="custom-control custom-switch switch-only d-inline-block">
+                  <input type="checkbox" className="custom-control-input" checked="" id="customSwitchIcon1" />
+                  <label className="custom-control-label" htmlFor="customSwitchIcon1"><span className="sr-only">Toggle this switch element</span></label>
+                </div>
+              </span>
+            </li>
+            <li className="nav-item d-md-none">
+              <a href="#" className="nav-link nav-first-link">
+                <span className="glyphicons-setting" aria-hidden="true" />
+                    프로필 설정
+              </a>
+            </li>
+            <li className="nav-item d-md-none">
+              <a href="#" className="nav-link nav-first-link">
+                <span className="glyphicons-logout" aria-hidden="true" />
+                    로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
     <main className="theme-contents contents-mt">
       <div className="row flex-column flex-md-row justify-content-md-between align-items-md-center mb-6 no-gutters">
         <div className="order-md-2">
@@ -18,13 +115,12 @@ const Board = () => (
           <div className="h2 font-weight-normal mb-0">주문관리</div>
         </div>
       </div>
-      {/* list toolbar */}
       <div className="list d-flex justify-content-xl-between flex-xl-row flex-md-column flex-column mb-3">
         <div className="btn-toolbar mb-xl-0 col-md-12 col-xl-9 p-0">
 
-          <div className="btn-group col-12 col-md-6 col-xl-4 mb-2 p-0" style={{ minWidth: 305, height: 38 }}>
+          <div className="btn-group col-12 col-md-6 col-xl-4 mb-2 p-0" style="min-width:305px; height: 38px;">
             <div className="d-flex col-12 align-items-center border border-dark rounded-lg p-0 bg-neo">
-              <div className="input-group float-left mr-1" style={{ width: '50%' }}>
+              <div className="input-group float-left mr-1" style="width:50%;">
                 <input
                   type="text"
                   className="form-control start-date pr-0 bg-neo border-0 text-white"
@@ -34,23 +130,15 @@ const Board = () => (
                   <span className="g-transparent bg-neo border-0 d-table h-100">
                     <i
                       className="glyphicons-outline_calendar d-table-cell align-middle"
-                      style={{ fontSize: '1.25rem', color: '#aaaaaf' }}
+                      style="font-size:1.25rem; color:#aaaaaf;"
                     />
                   </span>
                 </span>
               </div>
-              <div className="float-left text-center" style={{ width: '2%' }}>
-                <div
-                  className="mx-auto"
-                  style={{
-                    width: '15%',
-                    height: 1,
-                    backgroundColor: '#c7c7cc',
-                    minWidth: 12,
-                  }}
-                />
+              <div className="float-left text-center" style="width:2%;">
+                <div className="mx-auto" style="width:15%; height:1px; background-color:#c7c7cc; min-width:12px;" />
               </div>
-              <div className="input-group float-left" style={{ width: '50%' }}>
+              <div className="input-group float-left" style="width:50%;">
                 <input
                   type="text"
                   className="form-control end-date pr-0 bg-neo border-0 text-white"
@@ -60,7 +148,7 @@ const Board = () => (
                   <span className="g-transparent border-0 d-table h-100">
                     <i
                       className="glyphicons-outline_calendar d-table-cell align-middle"
-                      style={{ fontSize: '1.25rem', color: '#aaaaaf' }}
+                      style="font-size:1.25rem; color:#aaaaaf;"
                     />
                   </span>
                 </span>
@@ -68,7 +156,7 @@ const Board = () => (
             </div>
           </div>
 
-          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 96 }}>
+          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style="min-width: 96px;">
             <button
               className="btn btn-outline-dark btn-md pl-3 pr-3 dropdown-toggle text-left w-100 bg-neo"
               type="button"
@@ -76,7 +164,7 @@ const Board = () => (
               aria-haspopup="true"
               aria-expanded="false"
             >
-            최신순
+                  최신순
             </button>
             <div className="dropdown-menu">
               <a className="dropdown-item" href="#">최신 순</a>
@@ -85,7 +173,7 @@ const Board = () => (
             </div>
           </div>
 
-          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 82 }}>
+          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style="min-width: 82px;">
             <button
               className="btn btn-outline-dark btn-md dropdown-toggle text-left w-100 bg-neo"
               type="button"
@@ -113,7 +201,7 @@ const Board = () => (
         <div className="d-flex justify-content-end justify-content-md-end">
           <div className="list-before-checked">
             <button type="button" className="btn btn-dark icon-only">
-                상품추가
+                  상품추가
               <span className="glyphicons-add" aria-hidden="true" />
               <span className="sr-only">ADD</span>
             </button>
@@ -121,23 +209,21 @@ const Board = () => (
           <div className="list-after-checked">
             <span className="d-flex align-items-center mr-3">
               <span className="countChecked">0</span>
-                개 선택됨
+개 선택됨
             </span>
             <button type="button" className="btn btn-light mr-2">취소</button>
             <button type="button" className="btn btn-primary">삭제</button>
           </div>
         </div>
       </div>
-
-      {/* /list toolbar */}
       <div className="table-responsive mb-4 mb-md-7 uxs-check-all-container">
-        <table className="order-table table mb-0" style={{ minWidth: 680 }}>
+        <table className="order-table table mb-0" style="min-width: 680px;">
           <colgroup>
             <col />
             <col />
-            <col style={{ width: 200 }} />
+            <col style="width:200px" />
             <col />
-            <col style={{ width: 100 }} />
+            <col style="width:100px" />
             <col />
             <col />
           </colgroup>
@@ -193,7 +279,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-success" style={{ width: 48 }}>안정</span>
+                      <span className="badge badge-pill badge-success" style="width: 48px;">안정</span>
                     </div>
                   </div>
                 </div>
@@ -246,7 +332,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-danger" style={{ width: 48 }}>부족</span>
+                      <span className="badge badge-pill badge-danger" style="width: 48px;">부족</span>
                     </div>
                   </div>
                 </div>
@@ -299,7 +385,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-info" style={{ width: 48 }}>주문중</span>
+                      <span className="badge badge-pill badge-info" style="width: 48px;">주문중</span>
                     </div>
                   </div>
                 </div>
@@ -352,7 +438,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-success" style={{ width: 48 }}>안정</span>
+                      <span className="badge badge-pill badge-success" style="width: 48px;">안정</span>
                     </div>
                   </div>
                 </div>
@@ -405,7 +491,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-success" style={{ width: 48 }}>안정</span>
+                      <span className="badge badge-pill badge-success" style="width: 48px;">안정</span>
                     </div>
                   </div>
                 </div>
@@ -458,7 +544,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-success" style={{ width: 48 }}>안정</span>
+                      <span className="badge badge-pill badge-success" style="width: 48px;">안정</span>
                     </div>
                   </div>
                 </div>
@@ -511,7 +597,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-danger" style={{ width: 48 }}>부족</span>
+                      <span className="badge badge-pill badge-danger" style="width: 48px;">부족</span>
                     </div>
                   </div>
                 </div>
@@ -564,7 +650,7 @@ const Board = () => (
                   </div>
                   <div>
                     <div>
-                      <span className="badge badge-pill badge-danger" style={{ width: 48 }}>부족</span>
+                      <span className="badge badge-pill badge-danger" style="width: 48px;">부족</span>
                     </div>
                   </div>
                 </div>
@@ -585,7 +671,6 @@ const Board = () => (
           </tbody>
         </table>
       </div>
-
       <div className="d-flex position-relative justify-content-between align-items-md-center flex-column flex-md-row">
         <div className="d-flex align-items-center mb-3">
           <div className="mr-3">
@@ -623,7 +708,8 @@ const Board = () => (
           data-toggle="modal"
           data-target="#printPopup"
         >
-        인쇄
+인쇄
+
         </button>
       </div>
 

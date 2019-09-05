@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { ButtonContainer } from '../containers';
+// import { ButtonContainer } from '../containers';
 import { Board } from '../components';
 import { loadUser } from '../actions';
 
@@ -18,11 +18,11 @@ class Home extends PureComponent {
 
     console.log('users', users);
 
-    if (!users) return <p>get data...</p>;
+    // if (!users) return <p>get data...</p>;
 
     return (
       <Fragment>
-        <ButtonContainer />
+        {/* <ButtonContainer /> */}
         <Board />
       </Fragment>
     );
