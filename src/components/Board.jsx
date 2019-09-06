@@ -124,8 +124,8 @@ const Board = () => (
               <span className="countChecked">0</span>
                 개 선택됨
             </span>
-            <button type="button" className="btn btn-light mr-2">취소</button>
-            <button type="button" className="btn btn-primary">삭제</button>
+            <Button type="button" className="btn btn-light mr-2">취소</Button>
+            <Button type="button" className="btn btn-primary">삭제</Button>
           </div>
         </div>
       </div>
