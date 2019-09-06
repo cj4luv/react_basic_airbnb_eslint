@@ -42,9 +42,9 @@ const Row = ({ id, idx }) => (
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item className="dropdown-item" href="#/action-1">디지털/가전</Dropdown.Item>
-          <Dropdown.Item className="dropdown-item" href="#/action-2">패션/의류</Dropdown.Item>
-          <Dropdown.Item className="dropdown-item" href="#/action-3">생활/가전</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">디지털/가전</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">패션/의류</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">생활/가전</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </td>
@@ -94,7 +94,8 @@ const List = () => {
   const arr = [];
   for (let i = 0; i < 9; i += 1) {
     const idx = i + 1;
-    arr.push(<Row id={`${RowId}${idx}`} idx={idx} />);
+    const id = `${RowId}${idx}`;
+    arr.push(<Row id={id} idx={idx} />);
   }
 
   return arr;
