@@ -3,16 +3,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {
-  Table, Button, Dropdown,
-  // InputGroup,
+  Table, Button, Dropdown, InputGroup,
 } from 'react-bootstrap';
 
-/**
- *
- * TODO:
- * - InputGroup.Checkbox은 span 태그가 부모 태그로 존재한다.
- * - Table 컬럼의 들어갈 데이터와 Row Data를 부모에서 받아오게 해야한다.
- */
+// const InputGroupCheckbox = function InputGroupCheckbox(props) {
+//   return _react.default.createElement(InputGroupText, null, _react.default.createElement('input', (0, _extends2.default)({
+//     type: 'checkbox',
+//   }, props)));
+// };
 
 const Row = () => (
   <tr>
@@ -23,15 +21,14 @@ const Row = () => (
         <InputGroup.Checkbox aria-label="Check this custom checkbox" />
       </InputGroup> */}
 
-      {/* <InputGroup className="custom-control custom-checkbox icon-only">
-        <InputGroup.Checkbox aria-label="Check this custom checkbox" />
-        <label className="custom-control-label" htmlFor="checkItem1"><span className="sr-only">Check this custom checkbox</span></label>
-      </InputGroup> */}
-
-      <div className="custom-control custom-checkbox icon-only">
+      <InputGroup className="custom-control custom-checkbox icon-only">
         <input type="checkbox" className="custom-control-input uxs-check-all-item" id="checkItem1" />
         <label className="custom-control-label" htmlFor="checkItem1"><span className="sr-only">Check this custom checkbox</span></label>
-      </div>
+      </InputGroup>
+      {/* <div className="custom-control custom-checkbox icon-only">
+        <input type="checkbox" className="custom-control-input uxs-check-all-item" id="checkItem1" />
+        <label className="custom-control-label" htmlFor="checkItem1"><span className="sr-only">Check this custom checkbox</span></label>
+      </div> */}
     </td>
     <th scope="row">1</th>
     <td className="position-relative">

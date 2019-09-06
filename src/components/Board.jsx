@@ -2,8 +2,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Button, Dropdown } from 'react-bootstrap';
 
-import Table from './BsTable';
+import BsTable from './BsTable';
+import BsPagination from './BsPagination';
 
 const Board = () => (
   <div className="theme-body">
@@ -70,55 +72,53 @@ const Board = () => (
             </div>
           </div>
 
-          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 96 }}>
-            <button
+          <Dropdown className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 96 }}>
+            <Dropdown.Toggle
               className="btn btn-outline-dark btn-md pl-3 pr-3 dropdown-toggle text-left w-100 bg-neo"
-              type="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              variant="success"
             >
-            최신순
-            </button>
-            <div className="dropdown-menu">
-              <a className="dropdown-item" href="#">최신 순</a>
-              <a className="dropdown-item" href="#">가격 순</a>
-              <a className="dropdown-item" href="#">재고 순</a>
-            </div>
-          </div>
+              최신순
+            </Dropdown.Toggle>
 
-          <div className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 82 }}>
-            <button
+            <Dropdown.Menu>
+              <Dropdown.Item className="dropdown-item" href="#/action-1">최신 순</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" href="#/action-2">가격 순</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" href="#/action-3">재고 순</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown className="btn-group mb-2 col-6 col-sm-6 col-md-1 p-0" style={{ minWidth: 82 }}>
+            <Dropdown.Toggle
               className="btn btn-outline-dark btn-md dropdown-toggle text-left w-100 bg-neo"
-              type="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              variant="success"
             >
-                  메뉴
-            </button>
-            <div className="dropdown-menu">
-              <a className="dropdown-item" href="#">메뉴1</a>
-              <a className="dropdown-item" href="#">메뉴2</a>
-              <a className="dropdown-item" href="#">메뉴3</a>
-            </div>
-          </div>
+              메뉴
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item className="dropdown-item" href="#/action-1">메뉴1</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" href="#/action-2">메뉴2</Dropdown.Item>
+              <Dropdown.Item className="dropdown-item" href="#/action-3">메뉴3</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
 
           <form className="form-search form-inline mb-2 col-md-6 col-xl-4 p-0">
             <div className="custom-search w-100">
               <input type="search" className="form-control w-100 text-white" aria-describedby="검색" placeholder="검색" />
             </div>
-            <button type="button" className="form-search-cancel"><i className="glyphicons-cancel" /></button>
+            <Button type="button" className="form-search-cancel"><i className="glyphicons-cancel" /></Button>
           </form>
+
         </div>
 
         <div className="d-flex justify-content-end justify-content-md-end">
           <div className="list-before-checked">
-            <button type="button" className="btn btn-dark icon-only">
+            <Button type="button" className="btn btn-dark icon-only">
                 상품추가
               <span className="glyphicons-add" aria-hidden="true" />
               <span className="sr-only">ADD</span>
-            </button>
+            </Button>
           </div>
           <div className="list-after-checked">
             <span className="d-flex align-items-center mr-3">
@@ -133,48 +133,45 @@ const Board = () => (
 
       {/* /list toolbar */}
       <div className="table-responsive mb-4 mb-md-7 uxs-check-all-container">
-        <Table />
+        <BsTable />
       </div>
 
       <div className="d-flex position-relative justify-content-between align-items-md-center flex-column flex-md-row">
         <div className="d-flex align-items-center mb-3">
           <div className="mr-3">
-            <div className="dropdown">
-              <button
+
+            <Dropdown>
+              <Dropdown.Toggle
                 className="btn btn-outline-dark dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+                style={{ backgroundColor: 'rgb(18, 18, 18)' }}
               >
-                    13
-              </button>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">10</a>
-                <a className="dropdown-item" href="#">13</a>
-                <a className="dropdown-item" href="#">14</a>
-              </div>
-            </div>
+                13
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item className="dropdown-item" href="#/action-1">10</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="#/action-2">13</Dropdown.Item>
+                <Dropdown.Item className="dropdown-item" href="#/action-3">14</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
           </div>
           <div>
             <span className="text-white-38">1-13 / 300</span>
           </div>
         </div>
-        <ul className="pagination mb-3 justify-content-sm-center justify-content-center">
-          <li className="page-item"><a className="page-link" href="#">이전</a></li>
-          <li className="page-item"><a className="page-link" href="#">1</a></li>
-          <li className="page-item active"><a className="page-link" href="#">2</a></li>
-          <li className="page-item"><a className="page-link" href="#">3</a></li>
-          <li className="page-item"><a className="page-link" href="#">다음</a></li>
-        </ul>
-        <button
+
+        <BsPagination />
+
+        <Button
           type="button"
           className="btn btn-outline-dark mb-3 justify-content-sm-center d-none d-md-block"
           data-toggle="modal"
           data-target="#printPopup"
+          style={{ backgroundColor: 'rgb(18, 18, 18)' }}
         >
-        인쇄
-        </button>
+          인쇄
+        </Button>
       </div>
 
     </main>
