@@ -1,36 +1,51 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Table,
-  Button,
-  Dropdown,
+  Table, Button, Dropdown,
   FormCheck,
+  // Form,
+  // InputGroup,
 } from 'react-bootstrap';
 
 /**
  *
  * TODO:
+ * - InputGroup.Checkbox은 span 태그가 부모 태그로 존재한다.
  * - Table 컬럼의 들어갈 데이터와 Row Data를 부모에서 받아오게 해야한다.
  */
 
-const Row = ({ id, idx }) => (
+const Row = () => (
   <tr>
     <td>
+      {/* <InputGroup.Checkbox aria-label="Check this custom checkbox" /> */}
+
+      {/* <InputGroup className="custom-control custom-checkbox icon-only">
+        <InputGroup.Checkbox aria-label="Check this custom checkbox" />
+      </InputGroup> */}
+
+      {/* <InputGroup className="custom-control custom-checkbox icon-only">
+        <InputGroup.Checkbox aria-label="Check this custom checkbox" />
+        <label className="custom-control-label" htmlFor="checkItem1"><span className="sr-only">Check this custom checkbox</span></label>
+      </InputGroup> */}
+
+      {/* <Form.Check
+        // custom
+        type="checkbox"
+        id="checkItem1"
+      /> */}
+
+      {/* <Form className="custom-control custom-checkbox icon-only">
+        <Form.Check type="checkbox" id="checkItem1" />
+      </Form> */}
+
       <div className="custom-control custom-checkbox icon-only">
-        <FormCheck.Input
-          type="checkbox"
-          className="custom-control-input uxs-check-all-item"
-          id={id}
-        />
-        <FormCheck.Label
-          className="custom-control-label"
-          htmlFor={id}
-        >
-          <span className="sr-only">Check this custom checkbox</span>
-        </FormCheck.Label>
+        <FormCheck.Input type="checkbox" className="custom-control-input uxs-check-all-item" id="checkItem1" />
+        <FormCheck.Label className="custom-control-label" htmlFor="checkItem1"><span className="sr-only">Check this custom checkbox</span></FormCheck.Label>
       </div>
     </td>
-    <th scope="row">{idx}</th>
+    <th scope="row">1</th>
     <td className="position-relative">
       <Dropdown>
         <Dropdown.Toggle
@@ -78,38 +93,14 @@ const Row = ({ id, idx }) => (
   </tr>
 );
 
-Row.propTypes = {
-  id: PropTypes.string,
-  idx: PropTypes.number,
-};
-
-Row.defaultProps = {
-  id: '',
-  idx: 0,
-};
-
-const List = () => {
-  const RowId = 'checkItem';
-  const arr = [];
-  for (let i = 0; i < 9; i += 1) {
-    const idx = i + 1;
-    arr.push(<Row id={`${RowId}${idx}`} idx={idx} />);
-  }
-
-  return arr;
-};
-
-
 const BsTable = () => (
   <Table className="order-table table mb-0" style={{ minWidth: 680 }}>
     <thead>
       <tr>
         <th scope="col">
           <div className="custom-control custom-checkbox icon-only">
-            <FormCheck.Input type="checkbox" className="custom-control-input uxs-check-all" id="checkAll" />
-            <FormCheck.Label className="custom-control-label" htmlFor="checkAll">
-              <span className="sr-only">Check this custom checkbox</span>
-            </FormCheck.Label>
+            <input type="checkbox" className="custom-control-input uxs-check-all" id="checkAll" />
+            <label className="custom-control-label" htmlFor="checkAll"><span className="sr-only">Check this custom checkbox</span></label>
           </div>
         </th>
         <th scope="col">#</th>
@@ -121,7 +112,13 @@ const BsTable = () => (
       </tr>
     </thead>
     <tbody>
-      <List />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
+      <Row />
     </tbody>
   </Table>
 );

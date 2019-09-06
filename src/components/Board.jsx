@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Button, Dropdown, Form } from 'react-bootstrap';
 
 import BsTable from './BsTable';
 import BsPagination from './BsPagination';
@@ -102,13 +102,12 @@ const Board = () => (
             </Dropdown.Menu>
           </Dropdown>
 
-
-          <form className="form-search form-inline mb-2 col-md-6 col-xl-4 p-0">
-            <div className="custom-search w-100">
-              <input type="search" className="form-control w-100 text-white" aria-describedby="검색" placeholder="검색" />
-            </div>
+          <Form className="form-search form-inline mb-2 col-md-6 col-xl-4 p-0">
+            <Form.Group className="custom-search w-100">
+              <Form.Control type="search" className="form-control w-100 text-white" aria-describedby="검색" placeholder="검색" />
+            </Form.Group>
             <Button type="button" className="form-search-cancel"><i className="glyphicons-cancel" /></Button>
-          </form>
+          </Form>
 
         </div>
 
