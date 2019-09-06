@@ -5,6 +5,7 @@ import {
   Button,
   Dropdown,
   FormCheck,
+  Form,
 } from 'react-bootstrap';
 
 /**
@@ -48,7 +49,7 @@ const Row = ({ id, idx }) => (
       </Dropdown>
     </td>
     <td>
-      <input type="text" className="form-control text-light" id="input2" defaultValue="마이크로소프트 Window 10 OS" />
+      <Form.Control type="text" className="form-control text-light" id="input2" defaultValue="마이크로소프트 Window 10 OS" />
     </td>
     <td>45,000원</td>
     <td>
